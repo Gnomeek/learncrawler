@@ -122,26 +122,26 @@ class BDTB:
         title = self.getTitle(indexPage)
         self.setFileTitle(title)
         if pageNum == None:
-            print "URL已失效，请重试"
+            print u"URL已失效，请重试"
             return
         try:
-            print "该帖子共有" + str(pageNum) + "页"
+            print u"该帖子共有" + str(pageNum) + u"页"
             for i in range(1,int(pageNum)+1):
-                print "正在写入第" + str(i) + "页数据"
+                print u"正在写入第" + str(i) + u"页数据"
                 page = self.getPage(i)
                 contents = self.getContent(page)
                 self.writeData(contents)
         #出现写入异常
         except IOError,e:
-            print "写入异常，原因" + e.message
+            print u"写入异常，原因" + e.message
         finally:
-            print "写入任务完成"
+            print u"写入任务完成"
  
  
  
 print u"请输入帖子代号"
 baseURL = 'http://tieba.baidu.com/p/' + str(raw_input(u'http://tieba.baidu.com/p/'))
-seeLZ = raw_input("是否只获取楼主发言，是输入1，否输入0\n")
-floorTag = raw_input("是否写入楼层信息，是输入1，否输入0\n")
+seeLZ = raw_input(u"是否只获取楼主发言，是输入1，否输入0\n".encode('gbk'))
+floorTag = raw_input(u"是否写入楼层信息，是输入1，否输入0\n".encode('gbk'))
 bdtb = BDTB(baseURL,seeLZ,floorTag)
 bdtb.start()
