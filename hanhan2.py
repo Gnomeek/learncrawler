@@ -34,7 +34,7 @@ while j < 50:
 	
 	filename = url[j][url[j].find(r'blog_'):]
 	con = urllib2.urlopen(url[j]).read()
-	open (r'E:\somegit\learncrawler\hanhan\'+filename,'w').write(con)
+	open (r'E:\somegit\learncrawler\hanhan\ '+filename,'w').write(con)
 	print 'downloading',url[j]
 	time.sleep(1)
 	j += 1
