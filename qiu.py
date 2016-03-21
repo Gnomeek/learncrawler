@@ -32,12 +32,32 @@ def get_duanzi(url):
     '''
     获得url页面的所有段子,以列表形式保存，有图片的段子就不保存了。
     '''
+    #duanzimen = []
+    #soup = get_soup(url)
+    #qianyibu = soup.find_all('div',class_="article block untagged mb15")
+   # #print qianyibu
+    #for item in qianyibu:
+		#haveimg = item.find('img')
+		#if haveimg == []:
+        #duanzi = item.find_all('div',class_ = "content")
+		#dangeduanzi = duanzi.text
+        #duanzimen.append(dangeduanzi)
+    #for item in duanzi:
+        #dangeduanzi = item.text
+        #duanzimen.append(dangeduanzi)
+    #return duanzimen
     duanzimen = []
-    soup = get_soup(url)
-    duanzi = soup.find_all('div',class_ = "content")
-    for item in duanzi:
-        dangeduanzi = item.text
-        duanzimen.append(dangeduanzi)
+    soup=get_soup(url)
+    qianyibu = soup.find_all('div',class_="article block untagged mb15")
+    for i in qianyibu:
+	    haveimg1 = i.find_all('img')
+	    haveimg2 = haveimg1[1:2]
+	    if haveimg2 ==[]:
+		    s = i.find_all('div',class_="content")[0].text
+#haveimg = qianyibu[0].find('img')
+#need = soup.find_all('div',STYLE="min-height:22px")
+		    duanzimen.append(s)
+#print duanzimen
     return duanzimen
 
 def getOneStory(duanzimen):
