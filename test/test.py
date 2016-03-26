@@ -1,77 +1,36 @@
 # -*- coding:utf8 -*-
 import requests
-import re
+import json
+import urllib
+from bs4 import BeautifulSoup
 import os
 import os.path
+'''
+s = u'http://imgsrc.baidu.com/forum/w%3D413/sign=7522310e79310a55c424dff584444387/f17c034e251f95ca53dc394bc9177f3e6609529c.jpg'
 
-class HuabanCrawler():
-    """ 抓去花瓣网上的图片 """
+s1 = s[:30]
+s2 = s[-44:]
+new_s = s1+'pic/item/'+s2
+print new_s
+i = 1
+'''
+f = u'不再'
+s = u'一个'
+y = u'两个'
+z = u'三个'
+tieba_name = raw_input(u'请输入贴吧名称：\n').decode('utf-8')
+xuanze_zhuti = raw_input(u'请选择主题：\n').decode('utf-8')
+xuanze_tuce = raw_input(u'请选择图册：\n').decode('utf-8')
+def path(f,s,y):
+	dir_name=os.path.join(f,s)
+	if not os.path.exists(dir_name):
+		os.makedirs(dir_name)
+	else:
+		pass
+	dir_name2 = os.path.join(dir_name,y)
+	if not os.path.exists(dir_name2):
+		os.makedirs(dir_name2)
+	else:
+		pass
 
-    def __init__(self):
-        """ 在当前文件夹下新建images文件夹存放抓取的图片 """
-        self.homeUrl = "http://huaban.com/search/?q=%E8%83%BD%E5%B9%B4%E7%8E%B2%E5%A5%88&category=beauty"
-        self.images = []
-        if not os.path.exists('./images'):
-            os.mkdir('./images')
-
-    def __load_homePage(self):
-        """ 加载主页面 """
-        return requests.get(url = self.homeUrl).content
-
-    def __make_ajax_url(self, No):
-        """ 返回ajax请求的url """
-        return self.homeUrl + "?i5p998kw&max=" + No + "&limit=20&wfl=1"
-
-    def __load_more(self, maxNo):
-        """ 刷新页面 """
-        return requests.get(url = self.__make_ajax_url(maxNo)).content
-
-    def __process_data(self, htmlPage):
-        """ 从html页面中提取图片的信息 """
-        prog = re.compile(r'app\.page\["pins"\].*')
-        appPins = prog.findall(htmlPage)
-        # 将js中的null定义为Python中的None
-        null = None
-        true = True
-        if appPins == []:
-            return None
-        result = eval(appPins[0][19:-1])
-        for i in result:
-            info = {}
-            info['id'] = str(i['pin_id'])
-            info['url'] = "http://img.hb.aicdn.com/" + i["file"]["key"] + "_fw658"
-            if 'image' == i["file"]["type"][:5]:
-                info['type'] = i["file"]["type"][6:]
-            else:
-                info['type'] = 'NoName'
-            self.images.append(info)
-
-    def __save_image(self, imageName, content):
-        """ 保存图片 """
-        with open(imageName, 'wb') as fp:
-            fp.write(content)
-
-    def get_image_info(self, num=20):
-        """ 得到图片信息 """
-        self.__process_data(self.__load_homePage())
-        for i in range((num-1)/20):
-            self.__process_data(self.__load_more(self.images[-1]['id']))
-        return self.images
-
-    def down_images(self):
-        """ 下载图片 """
-        print "{} image will be download".format(len(self.images))
-        for key, image in enumerate(self.images):
-            print 'download {0} ...'.format(key)
-            try:
-                req = requests.get(image["url"])
-            except :
-                print 'error'
-            imageName = os.path.join("./images", image["id"] + "." + image["type"])
-            self.__save_image(imageName, req.content)
-
-
-if __name__ == '__main__':
-    hc = HuabanCrawler()
-    hc.get_image_info(200)
-    hc.down_images()
+path(tieba_name,xuanze_zhuti,xuanze_tuce)

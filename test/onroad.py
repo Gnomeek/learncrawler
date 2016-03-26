@@ -14,7 +14,7 @@ header={"User-Agent":random.choice(my_headers)}
 
 #html=urllib2.urlopen(req).read()
 
-url = 'http://tieba.baidu.com/p/3140419486#!/l/p1'
+url = u'http://tieba.baidu.com/photo/g?kw=能年玲奈&ie=utf-8#!/g/catidaee3e243ad4bd113276083025aafa40f4afb05c2'
 
 req=urllib2.Request(url, headers=header)
 response = urllib2.urlopen(req)
