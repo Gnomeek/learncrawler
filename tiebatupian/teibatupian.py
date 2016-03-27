@@ -3,7 +3,7 @@ import requests, json
 from bs4 import BeautifulSoup
 import os
 import os.path
-import urllib2,urllib
+import urllib
 
 global s
 s = requests.session()
@@ -27,11 +27,11 @@ def path(f,z,y):
 		os.makedirs(dir_name2)
 	else:
 		pass
+	return dir_name2
 
 def check_xuanze_zhuti(xuanze_zhuti,zhuti):
 	add_url = ''
 	for yigezhuti in zhuti:
-		#print yigezhuti
 		if xuanze_zhuti == yigezhuti[0]:
 			add_url = yigezhuti[1]
 	while add_url == '':
@@ -45,12 +45,9 @@ def check_xuanze_tuce(xuanze_tuce,tuce):
 	tid = ''
 	pe = ''
 	for yigetuce in tuce:
-		#print yigezhuti
 		if xuanze_tuce == yigetuce[0]:
-			#print yigetuce[0]
 			tid = yigetuce[1]
 			pe = yigetuce[2][:-1]
-			#tid_and_pe.append([yigetuce[1],yigetuce[2][:-1]])
 	while tid  == '':
 		print u'图册不存在，请重新输入。\n'
 		xuanze_tuce = raw_input(u'请选择图册：\n').decode('utf-8')
@@ -77,6 +74,7 @@ def get_tuce_neirong(zhuti_url):
 	tuce_tag = soup.find_all('div',class_="grbm_ele_wrapper")
 	for item in tuce_tag:
 		yige_tuceming = item.div.a.text
+		#若图册最后为...，在创建目录时会出现差异，导致错误，在这里将...去掉。
 		if yige_tuceming[-3:] == '...':
 			yige_tuceming = yige_tuceming[:-3]
 		yige_tuceid = item.a['href']
@@ -84,6 +82,7 @@ def get_tuce_neirong(zhuti_url):
 		tuce_neirong.append([yige_tuceming,yige_tuceid,yige_tupiangeshu])
 	return tuce_neirong
 
+#处理json，得到所需要信息。
 def get_pic_address(json_url):
 	pic_addres = []
 	h = s.get(json_url)
@@ -93,19 +92,22 @@ def get_pic_address(json_url):
 		pic_addres.append(item['purl'])
 	return pic_addres
 
-def pic_download(pic_address,tieba_name,xuanze_zhuti,xuanze_tuce):
+def pic_download(pic_address,dir_name2):
 	i = 1
 	for pic in pic_address:
 		pic1 = pic[:30]
 		pic2 = pic[-44:]
 		new_pic = pic1+'pic/item/'+pic2   #获得高清图地址
-		filename = str(i)+'.jpg'
-		print 'Downloading '+filename + '......'
-		urllib.urlretrieve(new_pic,'./'+tieba_name+'/'+xuanze_zhuti+'/'+xuanze_tuce+'/'+filename)
+		basename=str(i) + '.jpg'
+		filename=os.path.join(dir_name2,basename)
+		if not os.path.exists(filename):
+			print 'Downloading '+filename + '......'
+			urllib.urlretrieve(new_pic,filename)
+		else:
+			print filename+u'已存在，略过'
 		i += 1
 
 def main():
-
 	tieba_name = raw_input(u'请输入贴吧名称：\n').decode('utf-8')
 	main_url = 'http://tieba.baidu.com/photo/g?kw=' + tieba_name + '&ie=utf-8'
 	zhuti = get_zhuti_neirong(main_url)
@@ -128,8 +130,8 @@ def main():
 	#print json_url
 	pic_address = get_pic_address(json_url)
 	#print  pic_address
-	path(tieba_name,xuanze_zhuti,xuanze_tuce)
-	pic_download(pic_address,tieba_name,xuanze_zhuti,xuanze_tuce)
+	dir_name2 = path(tieba_name,xuanze_zhuti,xuanze_tuce)
+	pic_download(pic_address,dir_name2)
 
 if __name__=='__main__':
 	main()
