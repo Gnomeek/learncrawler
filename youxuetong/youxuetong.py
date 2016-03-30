@@ -1,13 +1,12 @@
 # -*- coding:utf-8 -*-
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 global i
-i = 0
+i = 50
 #第一部分，完成登陆。
 driver = webdriver.Chrome()
 driver.get("http://www.youxuetong.com/main/tologin.do")
@@ -25,13 +24,14 @@ driver.switch_to_frame("Openloginstatus")
 elem5 = driver.find_element_by_xpath("//a[@class='btn_tea']").click()
 
 #循环喽。。
-WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, "mainIframe")))
-while i < 20 :
+while i < 70 :
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, "mainIframe")))
     driver.switch_to_default_content()
     driver.switch_to_frame("mainIframe")
     driver.switch_to_frame("iframe")
     elem6 = driver.find_element_by_xpath("//input[@class='btn5'][2]").click()
-    time.sleep(5)
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "aui_loading")))
+    #time.sleep(5)aui_content aui_state_full
     driver.switch_to_default_content()
     elem7 = driver.find_element_by_xpath("//iframe")
     s = elem7.get_attribute('name')
