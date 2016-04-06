@@ -14,6 +14,5 @@ BOT_NAME = 'meizitu'
 SPIDER_MODULES = ['ttest.spiders']
 NEWSPIDER_MODULE = 'ttest.spiders'
 
-ITEM_PIPELINES = {'ttest.pipelines.DuitangPipeline': 1}
-
-IMAGES_STORE = '.'
+ITEM_PIPELINES = ["ttest.pipelines.PutinMySQLPipeline"]
+USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.66 Safari/537.36'

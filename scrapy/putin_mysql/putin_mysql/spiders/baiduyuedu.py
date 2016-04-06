@@ -1,17 +1,13 @@
 # -*- coding: utf-8 -*-
-__author__ = 'chenguolin'
-"""
-Date: 2014-03-06
-this is my first spider
-"""
+
 
 from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor
 from scrapy.contrib.spiders import CrawlSpider, Rule
 from scrapy.selector import HtmlXPathSelector
-from ttest.items import FirstscrapyItem
+from putin_mysql.items import PutinMysqlItem
 
-class firstScrapy(CrawlSpider):
-    name = "firstScrapy"
+class baiduyuedu(CrawlSpider):
+    name = "bdyd"
     allowed_domains = ["yuedu.baidu.com"]
     start_urls = ["http://yuedu.baidu.com/book/list/0?od=0&show=1&pn=0"]
     rules = [Rule(SgmlLinkExtractor(allow=('/ebook/[^/]+fr=booklist')), callback='myparse'),
@@ -19,7 +15,7 @@ class firstScrapy(CrawlSpider):
 
     def myparse(self, response):
         x = HtmlXPathSelector(response)
-        item = FirstscrapyItem()
+        item = PutinMysqlItem()
 
         # get item
         item['link'] = response.url

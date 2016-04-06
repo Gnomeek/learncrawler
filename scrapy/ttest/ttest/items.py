@@ -56,3 +56,16 @@ class DuitangItem(scrapy.Item):
     # define the fields for your item here like:
     image_urls = scrapy.Field()
     images = scrapy.Field()
+
+class CnblogsItem(scrapy.Item):
+    # define the fields for your item here like:
+    # name = scrapy.Field()
+    title = scrapy.Field()
+    link = scrapy.Field()
+    desc = scrapy.Field()
+    listUrl = scrapy.Field()
+    pass
+
+class FirstscrapyItem(scrapy.Item):
+    title = scrapy.Field(serializer=str)
+    link = scrapy.Field(serializer=str)
