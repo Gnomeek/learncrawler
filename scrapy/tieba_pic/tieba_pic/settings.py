@@ -15,7 +15,7 @@ SPIDER_MODULES = ['tieba_pic.spiders']
 NEWSPIDER_MODULE = 'tieba_pic.spiders'
 
 ITEM_PIPELINES = {'tieba_pic.pipelines.TiebaPicPipeline': 1}
-IMAGES_STORE = 'E:\\somegit\\learncrawler\\scrapy\\tieba_pic\\tieba_door'
+IMAGES_STORE = 'E:\\somegit\\learncrawler\\scrapy\\tieba_pic\\jugeng'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent

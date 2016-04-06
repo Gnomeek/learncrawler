@@ -11,6 +11,8 @@ import scrapy
 class TiebaPicItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
+    zhutiname = scrapy.Field()
+    tucename = scrapy.Field()
     image_urls = scrapy.Field()
     images = scrapy.Field()
     image_paths = scrapy.Field()
