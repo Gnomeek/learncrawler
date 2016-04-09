@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for tieba_pic project
+# Scrapy settings for Airplane project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,17 +9,15 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'tieba_pic'
+BOT_NAME = 'Airplane'
 
-SPIDER_MODULES = ['tieba_pic.spiders']
-NEWSPIDER_MODULE = 'tieba_pic.spiders'
-
-ITEM_PIPELINES = {'tieba_pic.pipelines.TiebaPicPipeline': 1}
-IMAGES_STORE = '.' #'E:\\somegit\\learncrawler\\scrapy\\tieba_pic\\两仪式'
-
+SPIDER_MODULES = ['Airplane.spiders']
+NEWSPIDER_MODULE = 'Airplane.spiders'
+ITEM_PIPELINES = {'Airplane.pipelines.AirplanePipeline': 1}
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'tieba_pic (+http://www.yourdomain.com)'
+#USER_AGENT = 'Airplane (+http://www.yourdomain.com)'
+USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.66 Safari/537.36'
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS=32
@@ -47,13 +45,13 @@ IMAGES_STORE = '.' #'E:\\somegit\\learncrawler\\scrapy\\tieba_pic\\两仪式'
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'tieba_pic.middlewares.MyCustomSpiderMiddleware': 543,
+#    'Airplane.middlewares.MyCustomSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'tieba_pic.middlewares.MyCustomDownloaderMiddleware': 543,
+#    'Airplane.middlewares.MyCustomDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -65,7 +63,7 @@ IMAGES_STORE = '.' #'E:\\somegit\\learncrawler\\scrapy\\tieba_pic\\两仪式'
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    'tieba_pic.pipelines.SomePipeline': 300,
+#    'Airplane.pipelines.SomePipeline': 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)

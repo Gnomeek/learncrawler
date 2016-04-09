@@ -14,12 +14,15 @@ header={"User-Agent":random.choice(my_headers)}
 
 #html=urllib2.urlopen(req).read()
 
-url = u'http://tieba.baidu.com/photo/g?kw=能年玲奈&ie=utf-8#!/g/catidaee3e243ad4bd113276083025aafa40f4afb05c2'
-
+url = u'http://flight.elong.com/isajax/OneWay/S?_=1460103006977&PageName=list&FlightType=OneWay&DepartC\
+ity=dlc&DepartCityName=%E5%A4%A7%E8%BF%9E&DepartCityNameEn=Dalian&ArriveCity=cgo&ArriveCityName=%E9%83%\
+91%E5%B7%9E&ArriveCityNameEn=Zhengzhou&DepartDate=2016%2F4%2F8+0%3A00&BackDate=2016%2F4%2F11+0%3A00&Day\
+Count=0&BackDayCount=3&SeatLevel=Y&IssueCity=dlc&OrderBy=Price&OrderFromId=50793&AirCorp=0&ElongMemberL\
+evel=Common&viewpath=~%2Fviews%2FList%2Foneway.aspx'
 req=urllib2.Request(url, headers=header)
 response = urllib2.urlopen(req)
 obj = response.read()
-test = open('test.html','w')
+test = open('yilong2.html','w')
 test.write(obj)
 #zhihu.truncate()
 test.close()

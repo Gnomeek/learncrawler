@@ -7,6 +7,7 @@
 import scrapy
 from scrapy.pipelines.images import ImagesPipeline
 from scrapy.exceptions import DropItem
+from spiders.pic_spider import tiebaname
 
 class TiebaPicPipeline(ImagesPipeline):
     def get_media_requests(self, item, info):
@@ -26,7 +27,7 @@ class TiebaPicPipeline(ImagesPipeline):
         # 从URL提取图片的文件名
         image_guid = request.url.split('/')[-1]
         # 拼接最终的文件名,格式:full/{书名}/{章节}/图片文件名.jpg
-        filename = u'full/{0[zhutiname]}/{0[tucename]}/{1}'.format(item, image_guid)
+        filename = u'full/'+tiebaname+u'/{0[zhutiname]}/{0[tucename]}/{1}'.format(item, image_guid)
         return filename
 
 

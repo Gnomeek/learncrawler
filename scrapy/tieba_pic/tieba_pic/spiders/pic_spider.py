@@ -16,6 +16,7 @@ class TiebapicSpider(scrapy.Spider):
     start_urls = []
 
     def __init__(self):
+        global tiebaname
         tiebaname = raw_input('name:').decode('gbk')
         self.tiebaname = tiebaname
         self.start_urls = ['http://tieba.baidu.com/photo/g?kw='+tiebaname+'&ie=utf-8']

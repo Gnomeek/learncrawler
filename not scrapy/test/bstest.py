@@ -1,4 +1,5 @@
 # -*- coding:utf8 -*-
 
-s = u"\n\n\u6811\u795e\u8868\u793a\u5f88\u59d4\u5c48\n"
-print s
+
+print '\xe5\xa4\xa7\xe8\xbf\x9e'.decode('utf-8')
+print '\xb4\xf3\xc1\xac'.encode('utf-8')
