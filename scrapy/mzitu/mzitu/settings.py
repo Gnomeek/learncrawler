@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-
-# Scrapy settings for tieba_pic project
+import random
+# Scrapy settings for mzitu project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,18 +9,23 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'tieba_pic'
+BOT_NAME = 'mzitu'
 
-SPIDER_MODULES = ['tieba_pic.spiders']
-NEWSPIDER_MODULE = 'tieba_pic.spiders'
+SPIDER_MODULES = ['mzitu.spiders']
+NEWSPIDER_MODULE = 'mzitu.spiders'
 
-ITEM_PIPELINES = {'tieba_pic.pipelines.TiebaPicPipeline1': 1,
-                  'tieba_pic.pipelines.TiebaPicPipeline': 1}
-IMAGES_STORE = '.' #'E:\\somegit\\learncrawler\\scrapy\\tieba_pic\\两仪式'
-
-
+ITEM_PIPELINES = {'mzitu.pipelines.MzituPipeline': 1}
+IMAGES_STORE = '.'
+my_headers = [
+'Mozilla/5.0 (Windows NT 5.2) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.122 Safari/534.30',
+'Mozilla/5.0 (Windows NT 5.1; rv:5.0) Gecko/20100101 Firefox/5.0',
+'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.2; Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET4.0E; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0C)',
+'Opera/9.80 (Windows NT 5.1; U; zh-cn) Presto/2.9.168 Version/11.50',
+'Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN) AppleWebKit/533.21.1 (KHTML, like Gecko) Version/5.0.5 Safari/533.21.1',
+'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022; .NET4.0E; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET4.0C)']
+USER_AGENT=random.choice(my_headers)
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'tieba_pic (+http://www.yourdomain.com)'
+#USER_AGENT = 'mzitu (+http://www.yourdomain.com)'
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS=32
@@ -48,13 +53,13 @@ IMAGES_STORE = '.' #'E:\\somegit\\learncrawler\\scrapy\\tieba_pic\\两仪式'
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'tieba_pic.middlewares.MyCustomSpiderMiddleware': 543,
+#    'mzitu.middlewares.MyCustomSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'tieba_pic.middlewares.MyCustomDownloaderMiddleware': 543,
+#    'mzitu.middlewares.MyCustomDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -66,7 +71,7 @@ IMAGES_STORE = '.' #'E:\\somegit\\learncrawler\\scrapy\\tieba_pic\\两仪式'
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    'tieba_pic.pipelines.SomePipeline': 300,
+#    'mzitu.pipelines.SomePipeline': 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)

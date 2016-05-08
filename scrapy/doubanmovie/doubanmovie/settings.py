@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for tieba_pic project
+# Scrapy settings for doubanmovie project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,22 +9,18 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'tieba_pic'
+BOT_NAME = 'doubanmovie'
 
-SPIDER_MODULES = ['tieba_pic.spiders']
-NEWSPIDER_MODULE = 'tieba_pic.spiders'
+SPIDER_MODULES = ['doubanmovie.spiders']
+NEWSPIDER_MODULE = 'doubanmovie.spiders'
 
-ITEM_PIPELINES = {'tieba_pic.pipelines.TiebaPicPipeline1': 1,
-                  'tieba_pic.pipelines.TiebaPicPipeline': 1}
-IMAGES_STORE = '.' #'E:\\somegit\\learncrawler\\scrapy\\tieba_pic\\两仪式'
-
-
+ITEM_PIPELINES = {'doubanmovie.pipelines.DoubanmoviePipeline': 1}
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'tieba_pic (+http://www.yourdomain.com)'
+#USER_AGENT = 'doubanmovie (+http://www.yourdomain.com)'
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS=32
-
+USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.66 Safari/537.36'
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
@@ -48,13 +44,13 @@ IMAGES_STORE = '.' #'E:\\somegit\\learncrawler\\scrapy\\tieba_pic\\两仪式'
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'tieba_pic.middlewares.MyCustomSpiderMiddleware': 543,
+#    'doubanmovie.middlewares.MyCustomSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'tieba_pic.middlewares.MyCustomDownloaderMiddleware': 543,
+#    'doubanmovie.middlewares.MyCustomDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -66,7 +62,7 @@ IMAGES_STORE = '.' #'E:\\somegit\\learncrawler\\scrapy\\tieba_pic\\两仪式'
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    'tieba_pic.pipelines.SomePipeline': 300,
+#    'doubanmovie.pipelines.SomePipeline': 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)

@@ -22,7 +22,6 @@ class TicketSpider(scrapy.Spider):
                                     1999999999999))+'&PageName=list&FlightType=OneWay&DepartCity='+\
                                     abbr[DepartCity.decode('utf-8')]+'&ArriveCity='+\
                                     abbr[ArriveCity.decode('utf-8')]+'&DepartDate='+DepartDate)
-            i += 1
 
     def parse(self,response):
         sel = json.loads(response.body,encoding='utf-8')

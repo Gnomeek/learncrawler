@@ -5,8 +5,6 @@ from tieba_pic.items import TiebaPicItem
 import json,sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
-import urllib
-import os
 
 class TiebapicSpider(scrapy.Spider):
     name = "tieba"
@@ -36,9 +34,10 @@ class TiebapicSpider(scrapy.Spider):
 
     def parse_zhuti(self,response):
         sel = Selector(response)
+        item = TiebaPicItem()
         for_tuce = sel.xpath('//div[@class="grbm_ele_wrapper"]')
         for yige in for_tuce:
-            item = TiebaPicItem()
+            #item = TiebaPicItem()
             item['zhutiname'] = sel.xpath('//a[@class="grbh_left_title"]/text()').extract()
             if item['zhutiname'] == []:
                 item['zhutiname'] = u'未分类图册'
