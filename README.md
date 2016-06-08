@@ -1,5 +1,5 @@
 # 一个学习python爬虫的过程
-not scrapy为学习原理部分，scrapy为学习scrapy框架部分＜/br＞
+not scrapy为学习原理部分，scrapy为学习scrapy框架部分    
 copy_and_learn 为copy或clone他人项目代码，作为不同功能的学习之用＜/br＞
 mine_or_improve 为自己写的或是改进一些他人代码的工作＜/br＞
 not scrapy中主要有＜/br＞
