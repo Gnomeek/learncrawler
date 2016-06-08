@@ -2,5 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/not scrapy/Zhihu_voters" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/not scrapy/fuck-login" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/scrapy/scrapy-itzhaopin" vcs="Git" />
   </component>
 </project>
